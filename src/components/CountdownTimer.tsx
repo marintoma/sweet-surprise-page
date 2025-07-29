@@ -65,7 +65,7 @@ export const CountdownTimer = ({ targetDate, onTimeReached }: CountdownTimerProp
             key={unit.label}
             className="bg-card border-2 border-primary/20 rounded-2xl p-6 countdown-pulse"
           >
-            <div className="text-3xl md:text-5xl font-bold text-primary gradient-romantic bg-clip-text text-transparent">
+            <div className="text-3xl md:text-5xl font-bold text-primary">
               {unit.value.toString().padStart(2, '0')}
             </div>
             <div className="text-sm md:text-base text-muted-foreground font-medium mt-2">
