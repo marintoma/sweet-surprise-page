@@ -1,60 +1,78 @@
 import { useEffect, useState } from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, Cat, Flower, Flower2 } from 'lucide-react';
 
-interface FloatingHeart {
+interface FloatingElement {
   id: number;
   left: number;
   size: number;
   delay: number;
   color: string;
+  type: 'heart' | 'cat' | 'flower' | 'flower2';
 }
 
 export const FloatingHearts = () => {
-  const [hearts, setHearts] = useState<FloatingHeart[]>([]);
+  const [elements, setElements] = useState<FloatingElement[]>([]);
 
   useEffect(() => {
-    const createHeart = () => {
-      const colors = ['text-primary', 'text-accent', 'text-pink-400', 'text-red-400'];
+    const createElement = () => {
+      const colors = ['text-primary', 'text-accent', 'text-pink-400', 'text-red-400', 'text-purple-400', 'text-rose-400'];
+      const types: ('heart' | 'cat' | 'flower' | 'flower2')[] = ['heart', 'cat', 'flower', 'flower2'];
       return {
         id: Math.random(),
         left: Math.random() * 100,
         size: Math.random() * 20 + 16,
         delay: Math.random() * 2,
         color: colors[Math.floor(Math.random() * colors.length)],
+        type: types[Math.floor(Math.random() * types.length)],
       };
     };
 
-    // Initial hearts
-    const initialHearts = Array.from({ length: 8 }, createHeart);
-    setHearts(initialHearts);
+    // Initial elements
+    const initialElements = Array.from({ length: 8 }, createElement);
+    setElements(initialElements);
 
-    // Add new hearts periodically
+    // Add new elements periodically
     const interval = setInterval(() => {
-      setHearts(prevHearts => {
-        const newHeart = createHeart();
-        const updatedHearts = [...prevHearts, newHeart];
+      setElements(prevElements => {
+        const newElement = createElement();
+        const updatedElements = [...prevElements, newElement];
         
-        // Keep only the last 12 hearts to prevent memory issues
-        return updatedHearts.slice(-12);
+        // Keep only the last 12 elements to prevent memory issues
+        return updatedElements.slice(-12);
       });
     }, 2000);
 
     return () => clearInterval(interval);
   }, []);
 
+  const renderIcon = (element: FloatingElement) => {
+    switch (element.type) {
+      case 'heart':
+        return <Heart fill="currentColor" />;
+      case 'cat':
+        return <Cat fill="currentColor" />;
+      case 'flower':
+        return <Flower fill="currentColor" />;
+      case 'flower2':
+        return <Flower2 fill="currentColor" />;
+      default:
+        return <Heart fill="currentColor" />;
+    }
+  };
+
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {hearts.map((heart) => (
+      {elements.map((element) => (
         <div
-          key={heart.id}
-          className={`absolute heart-float ${heart.color} opacity-70`}
+          key={element.id}
+          className={`absolute heart-float ${element.color} opacity-70`}
           style={{
-            left: `${heart.left}%`,
-            animationDelay: `${heart.delay}s`,
-            fontSize: `${heart.size}px`,
+            left: `${element.left}%`,
+            animationDelay: `${element.delay}s`,
+            fontSize: `${element.size}px`,
           }}
         >
-          <Heart fill="currentColor" />
+          {renderIcon(element)}
         </div>
       ))}
     </div>

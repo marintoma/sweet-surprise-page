@@ -55,7 +55,7 @@ export const CountdownTimer = ({ targetDate, onTimeReached }: CountdownTimerProp
 
   return (
     <div className="text-center space-y-8">
-      <h2 className="text-2xl md:text-4xl font-bold text-primary mb-8 heart-pulse">
+      <h2 className="text-2xl md:text-4xl font-bold text-primary mb-8">
         Your surprise is coming soon... 💕
       </h2>
       
@@ -63,7 +63,7 @@ export const CountdownTimer = ({ targetDate, onTimeReached }: CountdownTimerProp
         {timeUnits.map((unit) => (
           <div
             key={unit.label}
-            className="bg-card border-2 border-primary/20 rounded-2xl p-6 countdown-pulse"
+            className="bg-card border-2 border-primary/20 rounded-2xl p-6"
           >
             <div className="text-3xl md:text-5xl font-bold text-primary">
               {unit.value.toString().padStart(2, '0')}
