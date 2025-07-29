@@ -36,7 +36,7 @@ export const LoveMessage = () => {
             
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-lg mx-auto">
               You are very special to me and I wanted to create something just for you. 
-              I love you! 💖
+              I love you sweet Mico! 💖
             </p>
             
             <div className="text-5xl">✨💝✨</div>
