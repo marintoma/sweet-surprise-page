@@ -7,7 +7,7 @@ import { FloatingHearts } from '@/components/FloatingHearts';
 type PageState = 'countdown' | 'gift' | 'message';
 
 const Index = () => {
-  const [pageState, setPageState] = useState<PageState>('countdown');
+  const [pageState, setPageState] = useState<PageState>('countdown'); // Back to countdown for the actual surprise
   
   // Set target date to August 1st of current year (or next year if already passed)
   const now = new Date();
