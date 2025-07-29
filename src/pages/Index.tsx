@@ -1,11 +1,53 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { CountdownTimer } from '@/components/CountdownTimer';
+import { GiftBox } from '@/components/GiftBox';
+import { LoveMessage } from '@/components/LoveMessage';
+import { FloatingHearts } from '@/components/FloatingHearts';
+
+type PageState = 'countdown' | 'gift' | 'message';
 
 const Index = () => {
+  const [pageState, setPageState] = useState<PageState>('countdown');
+  
+  // Set target date to August 1st of current year (or next year if already passed)
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const august1st = new Date(currentYear, 7, 1); // Month is 0-indexed, so 7 = August
+  
+  // If August 1st has already passed this year, set it for next year
+  if (now > august1st) {
+    august1st.setFullYear(currentYear + 1);
+  }
+
+  const handleTimeReached = () => {
+    setPageState('gift');
+  };
+
+  const handleGiftOpened = () => {
+    setPageState('message');
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen relative overflow-hidden">
+      <FloatingHearts />
+      
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+        <div className="w-full max-w-4xl mx-auto">
+          {pageState === 'countdown' && (
+            <CountdownTimer 
+              targetDate={august1st} 
+              onTimeReached={handleTimeReached}
+            />
+          )}
+          
+          {pageState === 'gift' && (
+            <GiftBox onOpen={handleGiftOpened} />
+          )}
+          
+          {pageState === 'message' && (
+            <LoveMessage />
+          )}
+        </div>
       </div>
     </div>
   );
