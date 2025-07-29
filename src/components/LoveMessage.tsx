@@ -35,8 +35,8 @@ export const LoveMessage = () => {
             </div>
             
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-lg mx-auto">
-              You mean everything to me, and I wanted to create something special just for you. 
-              Thank you for being the most amazing person in my life! 💖
+              You are very special to me and I wanted to create something just for you. 
+              I love you! 💖
             </p>
             
             <div className="text-5xl">✨💝✨</div>

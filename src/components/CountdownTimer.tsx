@@ -76,7 +76,7 @@ export const CountdownTimer = ({ targetDate, onTimeReached }: CountdownTimerProp
       </div>
 
       <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto leading-relaxed">
-        Just a little bit longer, my love... ✨<br />
+        Just a little bit longer... ✨<br />
         Something special is waiting for you! 💖
       </p>
     </div>
