@@ -22,7 +22,7 @@ export const LoveMessage = () => {
           <div className="space-y-6">
             <div className="text-6xl md:text-8xl">💕</div>
             
-            <h1 className="text-4xl md:text-6xl font-bold gradient-romantic bg-clip-text text-transparent leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold gradient-romantic bg-clip-text leading-tight">
               I Love You!
             </h1>
             
