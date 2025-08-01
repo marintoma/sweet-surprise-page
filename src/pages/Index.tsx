@@ -13,11 +13,6 @@ const Index = () => {
   const now = new Date();
   const currentYear = now.getFullYear();
   const august1st = new Date(currentYear, 7, 1); // Month is 0-indexed, so 7 = August
-  
-  // If August 1st has already passed this year, set it for next year
-  if (now > august1st) {
-    august1st.setFullYear(currentYear + 1);
-  }
 
   const handleTimeReached = () => {
     setPageState('gift');
