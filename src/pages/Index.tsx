@@ -13,7 +13,13 @@ const Index = () => {
   const now = new Date();
   const currentYear = now.getFullYear();
   const august1st = new Date(currentYear, 7, 1); // Month is 0-indexed, so 7 = August
-
+// If today is already August 1st or later, skip countdown
+  useEffect(() => {
+    if (now >= august1st) {
+      setPageState('gift');
+    }
+  }, []);
+  
   const handleTimeReached = () => {
     setPageState('gift');
   };
