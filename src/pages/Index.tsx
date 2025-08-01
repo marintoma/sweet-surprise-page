@@ -4,24 +4,10 @@ import { GiftBox } from '@/components/GiftBox';
 import { LoveMessage } from '@/components/LoveMessage';
 import { FloatingHearts } from '@/components/FloatingHearts';
 
-type PageState = 'countdown' | 'gift' | 'message';
+type PageState = 'gift' | 'message';
 
 const Index = () => {
-  const [pageState, setPageState] = useState<PageState>('countdown');
-
-  const currentYear = new Date().getFullYear();
-  const august1st = new Date(currentYear, 7, 1); // August 1st
-
-  useEffect(() => {
-    const now = new Date();
-    if (now >= august1st) {
-      setPageState('gift');
-    }
-  }, []);
-
-  const handleTimeReached = () => {
-    setPageState('gift');
-  };
+  const [pageState, setPageState] = useState<PageState>('gift');
 
   const handleGiftOpened = () => {
     setPageState('message');
