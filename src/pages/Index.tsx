@@ -18,7 +18,7 @@ const Index = () => {
     if (now >= august1st) {
       setPageState('gift');
     }
-  }, []);
+  }, [august1st, now]);
   
   const handleTimeReached = () => {
     setPageState('gift');
